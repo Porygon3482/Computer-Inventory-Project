@@ -10,7 +10,7 @@ class ComputerSystem:
 
     def __init__(self, ipAddy, yearPurchased, os):
         self.ipAddy = ipAddy
-        self.yearPurchased = yearPurchased  # Uses the property setter
+        self.yearPurchased = yearPurchased  # uses the property setter
         self.os = os
 
     @property
