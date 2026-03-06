@@ -43,21 +43,32 @@ class linkedComputer():
         Adds a computer to the linked structure, inserting by year purchased
         :param computerData: the computer being added(must be of the computer class)
         """
-        for computer in self:
-            if computer.data.yearPurchased<=computerData.yearPurchased:
-                computerIndex = computer
-                break
-        computerNode = Node(computerData, computerIndex.next)
-        computerIndex.next = computerNode
-        self._size+=1
+        newNode = Node(computerData)
+
+        # Insert at head if list is empty or new item belongs before the first node
+        if self._items is None or computerData.yearPurchased <= self._items.data.yearPurchased:
+            newNode.next = self._items
+            self._items = newNode
+            self._size += 1
+            return
+
+        cursor = self._items
+        while cursor.next is not None and cursor.next.data.yearPurchased <= computerData.yearPurchased:
+            cursor = cursor.next
+
+        newNode.next = cursor.next
+        cursor.next = newNode
+        self._size += 1
+
     
     def remove(self):
         """
         Removes and returns data of the first node in the linked structure(the oldest computer)
         """
-        for computer in self:
-            if computer==0:
-                data = computer
-                break
-        data.next = None
+        if self._items is None:
+            return None
+
+        data = self._items.data
+        self._items = self._items.next
+        self._size -= 1
         return data
