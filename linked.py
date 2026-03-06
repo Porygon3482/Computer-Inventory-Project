@@ -1,5 +1,5 @@
 """
-Name: Neel Jhala
+Name: Neel Jhala and Neel Srivastava
 Assignment: Project 2, linked.py
 Date: 3/4/2026
 Summary:
